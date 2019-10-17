@@ -1,0 +1,14 @@
+﻿@model  List<PersonneModel>
+@{
+    ViewData["Title"] = "ListePersonnes";
+}
+
+<h2>ListePersonnes</h2>
+
+@foreach(PersonneModel p in Model)
+{
+    <div>
+        Nom : @p.Nom, Prénom : @p.Prenom
+    </div>
+}
+

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["titre"] = "Liste des personnes";
+    Layout = "_Layout2";
+}
+
+<div>
+    Nom : @ViewData["nom"]
+</div>
+<div>
+    Prénom : @ViewData["prenom"]
+</div>
+
+<div>
+    Rue : @ViewBag.Rue, Ville : @ViewBag.Ville
+</div>
+
+<h2>Liste des personnes</h2>
+
+@foreach(var p in (ViewData["liste"] as List<dynamic>))
+{
+    <div>@p</div>
+}

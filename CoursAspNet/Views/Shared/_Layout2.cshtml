@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["titre"]</title>
+    <environment include="Development">
+        <link type="text/css" rel="stylesheet" href="~/css/site.css" />
+        <link type="text/css" rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link type="text/css" rel="stylesheet" href="~/css/site.min.css" />
+        <link type="text/css" rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </environment>
+
+</head>
+<body>
+    <header class="container-fluid">
+        <nav class="row">
+            @*<li class="col"><a asp-controller="Home" asp-action="Index" asp-route-id="10" >Accueil</a></li>*@
+            <li class="col">@Html.ActionLink("Accueil", "Index", "Home", new { id = 10 })</li>
+        </nav>
+    </header>
+    <section>
+        @RenderBody()
+    </section>
+    <footer>
+        Pied de page
+    </footer>
+</body>
+</html>
