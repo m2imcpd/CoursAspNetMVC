@@ -66,11 +66,32 @@ namespace CoursAspNet.Controllers
 
         public IActionResult ListePersonnes()
         {
-            List<PersonneModel> personnes = new List<PersonneModel>();
-            personnes.Add(new PersonneModel { Nom = "tata", Prenom = "titi" });
-            personnes.Add(new PersonneModel { Nom = "toto", Prenom = "minet" });
 
-            return View(personnes);
+            DataDbContext data = new DataDbContext();
+            return View(data.PersonnesASP.ToList());
+        }
+
+        public IActionResult AddClientForms()
+        {
+            return View();
+        }
+
+        //public IActionResult ValidAddClient(string nom, string prenom)
+        //{
+        //    //return View("ListePersonnes");
+        //    PersonneModel p = new PersonneModel { Nom = nom, Prenom = prenom };
+        //    DataDbContext data = new DataDbContext();
+        //    data.PersonnesASP.Add(p);
+        //    data.SaveChanges();
+        //    return RedirectToAction("ListePersonnes");
+        //}
+
+        public IActionResult ValidAddClient(PersonneModel p)
+        { 
+            DataDbContext data = new DataDbContext();
+            data.PersonnesASP.Add(p);
+            data.SaveChanges();
+            return RedirectToAction("ListePersonnes");
         }
     }
 }
