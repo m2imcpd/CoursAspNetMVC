@@ -1,0 +1,37 @@
+﻿@model  ContactModel;
+@{
+    ViewData["Title"] = "FormsAddContact";
+}
+
+<h2>Ajouter un contact</h2>
+<form asp-controller="Contact" asp-action="AddContact" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <label>Nom : </label>
+            </div>
+            <div class="col-md-9">
+                <input asp-for="Nom" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Prénom : </label>
+            </div>
+            <div class="col-md-9">
+                <input asp-for="Prenom" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Téléphone : </label>
+            </div>
+            <div class="col-md-9">
+                <input asp-for="Telephone" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <button class="col-md-12 btn btn-danger" type="submit">Ajouter</button>
+        </div>
+    </div>
+</form>

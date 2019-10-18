@@ -30,5 +30,12 @@ namespace Annuaire.Models
             DataDbContext data = new DataDbContext();
             return data.Contacts.Find(id);
         }
+
+        public void Add()
+        {
+            DataDbContext data = new DataDbContext();
+            data.Contacts.Add(this);
+            data.SaveChanges();
+        }
     }
 }
