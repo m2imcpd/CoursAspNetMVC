@@ -20,6 +20,8 @@
         <div class="col-md-3">@c.Prenom</div>
         <div class="col-md-3">@c.Telephone</div>
         <div class="col-md-2"><a asp-controller="Contact" asp-action="DetailContact" asp-route-id="@c.Id">Detail</a></div>
+        <div class="col-md-2"><a asp-controller="Contact" asp-action="EditContact" asp-route-id="@c.Id">Modifier</a></div>
+        <div class="col-md-2"><a asp-controller="Contact" asp-action="DeleteContact" asp-route-id="@c.Id">Supprimer</a></div>
     </div>
     }
 </section>

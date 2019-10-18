@@ -5,6 +5,7 @@
 
 <h2>Ajouter un contact</h2>
 <form asp-controller="Contact" asp-action="AddContact" method="post">
+    <input type="hidden" asp-for="Id" />
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -31,7 +32,7 @@
             </div>
         </div>
         <div class="row">
-            <button class="col-md-12 btn btn-danger" type="submit">Ajouter</button>
+            <button class="col-md-12 btn btn-danger" type="submit">@if (Model == null || Model.Id == 0) { <span>Ajouter</span> } else  { <span>Editer</span> }</button>
         </div>
     </div>
 </form>

@@ -34,9 +34,30 @@ namespace Annuaire.Controllers
         [HttpPost]
         public IActionResult AddContact(ContactModel c)
         {
-            c.Add();
+            string message = "";
+            if(c.Id == 0)
+            {
+                c.Add();
+                message = "contact ajouté";
+            }
+            else
+            {
+                c.Update();
+                message = "contact modifié";
+            }
             //TempData["message"] = "coucou";
-            return RedirectToAction("Index", new { id = "Contact ajouté"});
+            return RedirectToAction("Index", new { id = message});
+        }
+
+        public IActionResult DeleteContact(int id)
+        {
+            ContactModel.DeleteContact(id);
+            return RedirectToAction("Index", new { id = "Contact supprimé" });
+        }
+
+        public IActionResult EditContact(int id)
+        {
+            return View("FormsAddContact", ContactModel.GetContactById(id));
         }
     }
 }
