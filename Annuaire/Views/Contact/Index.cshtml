@@ -12,6 +12,18 @@
 </section>
 }
 <section class="container">
+    <form asp-controller="Contact" asp-action="Index">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" name="search" placeholder="Votre recherche" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-default">Rechercher</button>
+            </div>
+        </div>
+    </form>
+</section>
+<section class="container">
     @foreach(ContactModel c in Model)
     {
     <div class="row">

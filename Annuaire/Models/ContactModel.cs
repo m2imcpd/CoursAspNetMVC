@@ -62,6 +62,11 @@ namespace Annuaire.Models
             }
         }
 
-        
+        public static List<ContactModel> GetContactsBySearch(string search)
+        {
+            DataDbContext data = new DataDbContext();
+            return data.Contacts.Where(c => c.Nom.Contains(search) || c.Prenom.Contains(search)).ToList();
+        }
+
     }
 }

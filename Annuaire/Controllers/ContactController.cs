@@ -9,11 +9,15 @@ namespace Annuaire.Controllers
 {
     public class ContactController : Controller
     {
-        public IActionResult Index(string id)
+        public IActionResult Index(string id, string search)
         {
+            List<ContactModel> listeContacts;
             if (id != null)
                 ViewBag.message = id;
-            List<ContactModel> listeContacts = ContactModel.GetAllContacts();
+            if (search == null)
+                listeContacts = ContactModel.GetAllContacts();
+            else
+                listeContacts = ContactModel.GetContactsBySearch(search);
             return View(listeContacts);
         }
 
