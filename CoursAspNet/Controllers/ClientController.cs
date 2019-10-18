@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNet.Models;
+using CoursAspNet.Tools;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNet.Controllers
@@ -57,7 +58,9 @@ namespace CoursAspNet.Controllers
         public IActionResult DetailPersonne()
         {
             PersonneModel personne = new PersonneModel() { Nom = "abadi", Prenom = "ihab" };
-
+            DataDbContext context = new DataDbContext();
+            context.PersonnesASP.Add(personne);
+            context.SaveChanges();
             return View(personne);
         }
 
