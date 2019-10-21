@@ -1,0 +1,54 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "FormsProduit";
+}
+
+<h2>Ajouter un produit</h2>
+<section class="container">
+    <form asp-action="addProduct" asp-controller="Product" method="post">
+        <div class="row">
+            <div class="col-md-3">
+                Photos :
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" name="photos" type="file" multiple />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                Nom Produit :
+            </div>
+            <div class="col-md-9">
+                <input asp-for="Title" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                Description Produit :
+            </div>
+            <div class="col-md-9">
+                <textarea asp-for="Description" class="form-control" ></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                Prix : 
+            </div>
+            <div class="col-md-9">
+                <input asp-for="Price" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                Categories
+            </div>
+            <select asp-items="@ViewBag.Categories" asp-for="Categories" class="form-control" multiple ></select>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="form-control">Ajouter</button>
+            </div>
+        </div>
+    </form>
+    
+</section>
