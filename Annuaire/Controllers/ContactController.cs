@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Annuaire.Models;
 using Annuaire.Tools;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Annuaire.Controllers
 {
@@ -48,8 +51,14 @@ namespace Annuaire.Controllers
         }
         //Limite l'action au verb POST
         [HttpPost]
-        public IActionResult AddContact(ContactModel c)
+        public IActionResult AddContact([Bind("Id, Nom, Prenom, Telephone")]ContactModel c, List<IFormFile> avatar)
         {
+            foreach(IFormFile file in avatar)
+            {
+                var stream = System.IO.File.Create(@"wwwroot\images\" + file.FileName);
+                file.CopyTo(stream);
+            }
+            
             string message = "";
             if(c.Id == 0)
             {

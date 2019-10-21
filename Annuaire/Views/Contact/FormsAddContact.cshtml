@@ -4,10 +4,16 @@
 }
 
 <h2>Ajouter un contact</h2>
-<form asp-controller="Contact" asp-action="AddContact" method="post">
+<form asp-controller="Contact" asp-action="AddContact" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="Id" />
     <div class="container">
         <div class="row">
+            <div class="col-md-3">
+                <label>Avatar : </label>
+            </div>
+            <div class="col-md-9">
+                <input type="file" multiple name="avatar" class="form-control" />
+            </div>
             <div class="col-md-3">
                 <label>Nom : </label>
             </div>
