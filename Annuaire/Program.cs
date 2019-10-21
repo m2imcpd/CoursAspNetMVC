@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Annuaire.Tools;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +16,9 @@ namespace Annuaire
     {
         public static void Main(string[] args)
         {
+            Container.Instance.Register<IInterfaceA, ClassA>();
+            ClassB b = new ClassB();
+            var t = b.pA.GetType();
             CreateWebHostBuilder(args).Build().Run();
         }
 
