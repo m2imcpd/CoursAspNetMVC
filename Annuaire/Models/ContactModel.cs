@@ -19,6 +19,8 @@ namespace Annuaire.Models
         public string Prenom { get => prenom; set => prenom = value; }
         public string Telephone { get => telephone; set => telephone = value; }
 
+        public static IServiceProvider service;
+
         public ContactModel()
         {
 
@@ -27,8 +29,9 @@ namespace Annuaire.Models
         
         public static List<ContactModel> GetAllContacts()
         {
-            DataDbContext data = new DataDbContext();
-            return data.Contacts.ToList();
+            //DataDbContext data = new DataDbContext();
+            
+            return ((DataDbContext)service.GetService(typeof(DataDbContext))).Contacts.ToList();
         }
 
         public static ContactModel GetContactById(int id)

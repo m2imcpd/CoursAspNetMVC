@@ -3,12 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Annuaire.Models;
+using Annuaire.Tools;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Annuaire.Controllers
 {
     public class ContactController : Controller
     {
+        private IServiceProvider provider;
+        //public ContactController(DataDbContext data)
+        //{
+
+        //}
+
+        public ContactController(IServiceProvider _service)
+        {
+            provider = _service;
+            ContactModel.service = provider;
+        }
         public IActionResult Index(string id, string search)
         {
             List<ContactModel> listeContacts;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Annuaire.Tools;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +31,10 @@ namespace Annuaire
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-           
+            //services.AddTransient(typeof(IInterfaceA), typeof(ClassA));
+            //services.AddScoped(typeof(IInterfaceA), typeof(ClassA));
+            //services.AddSingleton(typeof(IInterfaceA), typeof(ClassA));
+            services.AddDbContext<DataDbContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
