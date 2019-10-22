@@ -35,3 +35,9 @@ body {
         display: none;
     }
 }
+.produit {
+    text-align:center
+}
+.produit img {
+    width:200px
+}

@@ -72,5 +72,15 @@ namespace ECommerce.Controllers
             data.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Detail(int id)
+        {
+            Product p = data.Products.Include("Images").FirstOrDefault(x => x.Id == id);
+            p.Images.ToList().ForEach(img =>
+            {
+                img.Image = data.Images.Find(img.ImageId);
+            });
+            return View(p);
+        }
     }
 }

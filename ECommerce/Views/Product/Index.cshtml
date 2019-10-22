@@ -4,25 +4,34 @@
 }
 
 <h2>Liste des produits</h2>
-@foreach(Product p in Model)
-{
 <div class="row">
-    <div class="col-md-3">
-        @if (p.Images.Count > 0)
-        {
-            <img src="@((p.Images as List<ImageProduit>)[0].Image.UrlImage)" />
-        }
+    @foreach (Product p in Model)
+    {
+    <div class="col-md-3 produit">
+        <div class="row">
+            <div class="col-md-12">
+                @if (p.Images.Count > 0)
+                {
+                    <img src="@((p.Images as List<ImageProduit>)[0].Image.UrlImage)" />
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @p.Title
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @p.Price €
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a asp-action="Detail" asp-controller="Product" asp-route-id="@p.Id" class="btn btn-default">Detail</a>
+            </div>
+        </div>
+    </div>
+    }
 
-    </div>
-    <div class="col-md-3">
-        @p.Title
-    </div>
-    <div class="col-md-3">
-        @p.Description
-    </div>
-    <div class="col-md-3">
-        @p.Price €
-    </div>
 </div>
-}
-

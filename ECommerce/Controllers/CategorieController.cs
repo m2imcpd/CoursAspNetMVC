@@ -32,7 +32,7 @@ namespace ECommerce.Controllers
             if(image != null)
             {
                 string imageFile = Path.Combine("wwwroot", "images", categorie.Titre + "-" + image.FileName);
-                string urlImage ="~/images/"+categorie.Titre + "-" + image.FileName;
+                string urlImage ="http://"+Request.Host+"/images/"+categorie.Titre + "-" + image.FileName;
                 var stream = System.IO.File.Create(imageFile);
                 image.CopyTo(stream);
                 Image img = new Image { UrlImage = urlImage };
