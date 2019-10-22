@@ -8,6 +8,7 @@ using ECommerce.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Controllers
 {
@@ -19,9 +20,23 @@ namespace ECommerce.Controllers
         {
             data = _d;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            return View();
+            List<Product> liste;
+            if (id == null)
+                liste = data.Products.Include("Categories").Include("Images").ToList();
+            else
+                //Foreach sur Products pour garder que les produits dont l'id d'une catégorie est égale à l'Id
+                liste = data.Products.Include("Categories").Include("Images").Where(p => p.Categories.Any(c => c.CategorieId == id)).ToList();
+
+            liste.ForEach(produit =>
+            {
+                produit.Images.ToList().ForEach(img =>
+                {
+                    img.Image = data.Images.Find(img.ImageId);
+                });
+            });
+           return View(liste);
         }
 
         public IActionResult FormsProduct()
@@ -40,9 +55,10 @@ namespace ECommerce.Controllers
             foreach(IFormFile image in photos)
             {
                 string imageFile = Path.Combine("wwwroot", "images", produit.Title + "-" + image.FileName);
-                string urlImage = "~/images/" + produit.Title + "-" + image.FileName;
+                string urlImage = "http://"+Request.Host+ "/images/" + produit.Title + "-" + image.FileName;
                 var stream = System.IO.File.Create(imageFile);
                 image.CopyTo(stream);
+                stream.Close();
                 Image img = new Image { UrlImage = urlImage };
                 data.Images.Add(img);
                 data.SaveChanges();

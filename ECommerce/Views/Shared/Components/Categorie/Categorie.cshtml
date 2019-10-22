@@ -3,6 +3,6 @@
 <section>
     @foreach(Categorie c in Model)
     {
-        <div>@c.Titre</div>
+        <div><a asp-controller="Product" asp-action="Index" asp-route-id="@c.Id">@c.Titre</a></div>
     }
 </section>
