@@ -41,7 +41,16 @@
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
-        @RenderBody()
+        <div class="row">
+            <div class="col-md-3">
+               @await Component.InvokeAsync("Categorie")
+                @*<vc:Categorie></vc:Categorie>*@
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+        
         <hr />
         <footer>
             <p>&copy; 2019 - ECommerce</p>
