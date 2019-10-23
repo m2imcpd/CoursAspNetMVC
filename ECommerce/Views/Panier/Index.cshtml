@@ -15,7 +15,7 @@
                 @p.Produit.Price
             </div>
             <div class="col-md-3">
-                @p.qty
+                <a asp-route="updateQtyProduit" asp-route-id="@p.Produit.Id" asp-route-qty="-1">-</a>@p.qty<a asp-route="updateQtyProduit" asp-route-id="@p.Produit.Id" asp-route-qty="1">+</a>
             </div>
             <div class="col-md-3">
                 <a asp-controller="Panier" asp-action="DeleteProduct" asp-route-id="@p.Produit.Id">supprimer</a>

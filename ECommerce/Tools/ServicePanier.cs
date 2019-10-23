@@ -58,6 +58,23 @@ namespace ECommerce.Tools
             session.SetString("panier", JsonConvert.SerializeObject(panier));
         }
 
+        public void UpdateQuantite(int qty, int produitId)
+        {
+            List<dynamic> panier = GetProduitsPanier();
+            dynamic pPanier = panier.FirstOrDefault(x => x.Produit.Id == produitId);
+            if(pPanier != null)
+            {
+                if (pPanier.qty > 0)
+                {
+                    pPanier.qty += qty;
+                    if (pPanier.qty == 0)
+                        RetirerProduit(produitId);
+                    else 
+                        session.SetString("panier", JsonConvert.SerializeObject(panier));
+                } 
+            }
+        }
+
         public decimal TotalPanier()
         {
             decimal total = 0;

@@ -58,6 +58,9 @@ namespace ECommerce
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Product}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "updateQtyProduit",
+                    template: "UpdateQty/{id}/{qty}",new { controller="Panier", action="UpdateQty"});
             });
         }
     }
