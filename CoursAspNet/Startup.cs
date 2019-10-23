@@ -30,7 +30,7 @@ namespace CoursAspNet
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -48,7 +48,7 @@ namespace CoursAspNet
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("SpecialRoute", "Coucou/{titre}", new { controller = "Home", action = "Index" });
