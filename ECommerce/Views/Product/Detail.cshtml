@@ -22,6 +22,6 @@
         @Model.Price €
     </div>
     <div class="col-md-9">
-        <a class="btn btn-default">Ajouter au Panier</a>
+        <a asp-controller="Panier" asp-action="AddProduct" asp-route-id="@Model.Id" class="btn btn-default">Ajouter au Panier</a>
     </div>
 </section>

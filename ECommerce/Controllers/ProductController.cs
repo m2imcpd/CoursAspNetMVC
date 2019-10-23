@@ -17,9 +17,9 @@ namespace ECommerce.Controllers
         private DataDbContext data;
         private IResizeImageService serviceImage;
 
-        public ProductController(DataDbContext _d, IResizeImageService _serviceImage)
+        public ProductController(DataDbContext _data, IResizeImageService _serviceImage)
         {
-            data = _d;
+            data = _data;
             serviceImage = _serviceImage;
         }
         public IActionResult Index(int? id)

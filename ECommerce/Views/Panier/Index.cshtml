@@ -1,0 +1,27 @@
+﻿@model List<dynamic> 
+@{
+    ViewData["Title"] = "Panier";
+}
+
+<h2>Votre panier</h2>
+<section class="container">
+    @foreach(dynamic p in Model)
+    {
+        <div class="row">
+            <div class="col-md-3">
+                @p.Produit.Title
+            </div>
+            <div class="col-md-3">
+                @p.Produit.Price
+            </div>
+            <div class="col-md-3">
+                @p.qty
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            @ViewBag.Total €
+        </div>
+    </div>
+</section>

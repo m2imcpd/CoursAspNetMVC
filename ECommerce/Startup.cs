@@ -30,9 +30,11 @@ namespace ECommerce
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddSession();
             services.AddDbContext<DataDbContext>();
             services.AddTransient<IResizeImageService, ResizeImageService>();
+            services.AddTransient<IServicePanier, ServicePanier>();
+            services.AddHttpContextAccessor();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -50,7 +52,7 @@ namespace ECommerce
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
