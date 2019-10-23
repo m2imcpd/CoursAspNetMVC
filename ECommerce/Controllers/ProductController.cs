@@ -15,10 +15,12 @@ namespace ECommerce.Controllers
     public class ProductController : Controller
     {
         private DataDbContext data;
+        private IResizeImageService serviceImage;
 
-        public ProductController(DataDbContext _d)
+        public ProductController(DataDbContext _d, IResizeImageService _serviceImage)
         {
             data = _d;
+            serviceImage = _serviceImage;
         }
         public IActionResult Index(int? id)
         {
@@ -54,11 +56,13 @@ namespace ECommerce.Controllers
         {
             foreach(IFormFile image in photos)
             {
-                string imageFile = Path.Combine("wwwroot", "images", produit.Title + "-" + image.FileName);
-                string urlImage = "http://"+Request.Host+ "/images/" + produit.Title + "-" + image.FileName;
-                var stream = System.IO.File.Create(imageFile);
-                image.CopyTo(stream);
-                stream.Close();
+                string imageFile = Path.Combine("wwwroot", "images", produit.Title + "-" + Path.GetFileName(image.FileName));
+                string urlImage = "http://"+Request.Host+ "/images/" + produit.Title + "-" + Path.GetFileName(image.FileName);
+                //var stream = System.IO.File.Create(imageFile);
+                //image.CopyTo(stream);
+                //stream.Close();
+                BinaryReader reader = new BinaryReader(image.OpenReadStream());
+                serviceImage.SaveImage(reader.ReadBytes((int)image.Length), imageFile, 250, 250);
                 Image img = new Image { UrlImage = urlImage };
                 data.Images.Add(img);
                 data.SaveChanges();

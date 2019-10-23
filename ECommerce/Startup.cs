@@ -32,7 +32,7 @@ namespace ECommerce
             });
 
             services.AddDbContext<DataDbContext>();
-
+            services.AddTransient<IResizeImageService, ResizeImageService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

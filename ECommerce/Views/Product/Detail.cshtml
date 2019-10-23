@@ -4,4 +4,24 @@
 }
 
 <h2>@Model.Title</h2>
-
+<section class="row">
+   @foreach(ImageProduit img in Model.Images)
+   {
+       <div class="col-md-3">
+           <img src="@img.Image.UrlImage" />
+       </div>
+   }
+</section>
+<section class="row">
+    <div class="col-md-12">
+        @Model.Description
+    </div>
+</section>
+<section class="row">
+    <div class="col-md-3">
+        @Model.Price €
+    </div>
+    <div class="col-md-9">
+        <a class="btn btn-default">Ajouter au Panier</a>
+    </div>
+</section>
