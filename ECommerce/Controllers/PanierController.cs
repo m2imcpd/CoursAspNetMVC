@@ -28,5 +28,11 @@ namespace ECommerce.Controllers
             servicePanier.AjouterProduit(id);
             return RedirectToAction("Index");
         }
+
+        public IActionResult DeleteProduct(int id)
+        {
+            servicePanier.RetirerProduit(id);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -17,6 +17,9 @@
             <div class="col-md-3">
                 @p.qty
             </div>
+            <div class="col-md-3">
+                <a asp-controller="Panier" asp-action="DeleteProduct" asp-route-id="@p.Produit.Id">supprimer</a>
+            </div>
         </div>
     }
     <div class="row">

@@ -45,7 +45,17 @@ namespace ECommerce.Tools
 
         public void RetirerProduit(int produitId)
         {
-            
+            List<dynamic> panier = GetProduitsPanier();
+            Product p = data.Products.FirstOrDefault(x => x.Id == produitId);
+            if(p != null)
+            {
+                dynamic pPanier = panier.FirstOrDefault(x => x.Produit.Id == p.Id);
+                if (pPanier != null)
+                {
+                    panier.Remove(pPanier);
+                }
+            }
+            session.SetString("panier", JsonConvert.SerializeObject(panier));
         }
 
         public decimal TotalPanier()
