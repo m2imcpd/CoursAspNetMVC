@@ -8,9 +8,9 @@ namespace CoursAspNet.Tools
 {
     public class AdminRequirement : IAuthorizationRequirement
     {
-        public string TypeProfil { get; set; }
+        public string[] TypeProfil { get; set; }
 
-        public AdminRequirement(string type)
+        public AdminRequirement(params string[] type)
         {
             TypeProfil = type;
         }

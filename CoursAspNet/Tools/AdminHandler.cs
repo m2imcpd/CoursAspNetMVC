@@ -29,7 +29,7 @@ namespace CoursAspNet.Tools
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, AdminRequirement requirement)
         {
             string cookieValue = accessor.HttpContext.Request.Cookies["user"];
-            if(cookieValue == requirement.TypeProfil)
+            if(requirement.TypeProfil.Contains(cookieValue))
             {
                 context.Succeed(requirement);
             }

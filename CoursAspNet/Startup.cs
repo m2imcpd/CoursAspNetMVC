@@ -41,6 +41,10 @@ namespace CoursAspNet
                 {
                     pol.Requirements.Add(new AdminRequirement("admin"));
                 });
+                options.AddPolicy("All", pol =>
+                {
+                    pol.Requirements.Add(new AdminRequirement("admin","editor"));
+                });
                 options.AddPolicy("editor", pol =>
                 {
                     pol.Requirements.Add(new AdminRequirement("editor"));

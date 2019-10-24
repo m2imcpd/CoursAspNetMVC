@@ -65,7 +65,7 @@ namespace CoursAspNet.Controllers
             return View(personne);
         }
         
-        [Authorize("editor")]
+        [Authorize("All")]
         public IActionResult ListePersonnes()
         {
 
