@@ -19,6 +19,8 @@ namespace ECommerce.Tools
         public DbSet<Image> Images { get; set; }
         public DbSet<ImageProduit> ImagesProduct { get; set; }
 
+        public DbSet<UserModel> Users { get; set; }
+
         public DbSet<ProductCategorie> ProductCategories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

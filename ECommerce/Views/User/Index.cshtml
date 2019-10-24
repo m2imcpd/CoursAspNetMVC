@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Login et inscription</h2>
+<section class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="UserRegister" asp-controller="User">
+                @if(ViewBag.message != null)
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger">
+                                @ViewBag.message
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="Nom" placeholder="Votre Nom" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="Prenom" placeholder="Votre prénom" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="Email" placeholder="Votre Email" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="password" class="form-control" name="Password" placeholder="Votre mot de passe" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-danger" type="submit">S'inscrire</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
