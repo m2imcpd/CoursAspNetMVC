@@ -14,6 +14,7 @@ namespace CoursAspNet.Tools
         public ServicePanier(IHttpContextAccessor _httpContextAccessor)
         {
             accessor = _httpContextAccessor;
+            //accessor.HttpContext.Response
         }
         public void AjouterProduit()
         {

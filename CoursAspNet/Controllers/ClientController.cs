@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNet.Models;
 using CoursAspNet.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNet.Controllers
@@ -63,7 +64,8 @@ namespace CoursAspNet.Controllers
             context.SaveChanges();
             return View(personne);
         }
-
+        
+        [Authorize("editor")]
         public IActionResult ListePersonnes()
         {
 
@@ -71,6 +73,7 @@ namespace CoursAspNet.Controllers
             return View(data.PersonnesASP.ToList());
         }
 
+        [Authorize("admin")]
         public IActionResult AddClientForms()
         {
             return View();
@@ -85,6 +88,7 @@ namespace CoursAspNet.Controllers
         //    data.SaveChanges();
         //    return RedirectToAction("ListePersonnes");
         //}
+        
 
         public IActionResult ValidAddClient(PersonneModel p)
         { 

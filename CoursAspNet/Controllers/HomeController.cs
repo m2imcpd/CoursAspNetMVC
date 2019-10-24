@@ -14,16 +14,19 @@ namespace CoursAspNet.Controllers
     {
         public IActionResult Index(string id)
         {
-            object o = new { Nom = id == null ? "" : id };
-            HttpContext.Session.SetString("personne", JsonConvert.SerializeObject(o));
+            //Ajouter des données dans les sessions
+            //object o = new { Nom = id == null ? "" : id };
+            //HttpContext.Session.SetString("personne", JsonConvert.SerializeObject(o));
+            Response.Cookies.Append("nom_cookie", "value of cookie", new CookieOptions { Expires = DateTime.Now.AddDays(1) }) ;
             return View();
         }
 
         public IActionResult About()
         {
-            dynamic o =JsonConvert.DeserializeObject(HttpContext.Session.GetString("personne"));
-            ViewData["Message"] = o.Nom;
-
+            //Récupérer les données à partir d'une session
+            //dynamic o =JsonConvert.DeserializeObject(HttpContext.Session.GetString("personne"));
+            //ViewData["Message"] = o.Nom;
+            ViewData["Message"] = Request.Cookies["nom_cookie"];
             return View();
         }
 
@@ -37,6 +40,12 @@ namespace CoursAspNet.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult CreateCookie()
+        {
+            Response.Cookies.Append(".AspNet.Consent", "yes", new CookieOptions { Expires = DateTime.Now.AddYears(1) });
+            return  View("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

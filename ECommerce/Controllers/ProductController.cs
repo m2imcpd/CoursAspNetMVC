@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ECommerce.Models;
 using ECommerce.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -41,6 +42,8 @@ namespace ECommerce.Controllers
            return View(liste);
         }
 
+
+        
         public IActionResult FormsProduct()
         {
             ViewBag.Categories = new List<SelectListItem>();

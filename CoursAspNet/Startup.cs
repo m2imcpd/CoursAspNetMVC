@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoursAspNet.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,11 +28,25 @@ namespace CoursAspNet
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
             services.AddSession();
+            services.AddHttpContextAccessor();
+            //ajouter les polices d'authentication
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("admin", pol =>
+                {
+                    pol.Requirements.Add(new AdminRequirement("admin"));
+                });
+                options.AddPolicy("editor", pol =>
+                {
+                    pol.Requirements.Add(new AdminRequirement("editor"));
+                });
+            });
+            services.AddSingleton<IAuthorizationHandler, AdminHandler>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
