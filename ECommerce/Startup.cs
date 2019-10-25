@@ -32,9 +32,10 @@ namespace ECommerce
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddSession();
-            services.AddDbContext<DataDbContext>();
+            services.AddDbContext<DataDbContext>(ServiceLifetime.Singleton, ServiceLifetime.Singleton);
             services.AddTransient<IResizeImageService, ResizeImageService>();
             services.AddTransient<IServicePanier, ServicePanier>();
+            services.AddSingleton<ILoginService, LoginService>();
             services.AddHttpContextAccessor();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             

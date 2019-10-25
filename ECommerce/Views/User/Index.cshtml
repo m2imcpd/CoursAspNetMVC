@@ -7,7 +7,7 @@
 <section class="container">
     <div class="row">
         <div class="col-md-6">
-            <form asp-action="UserRegister" asp-controller="User">
+            <form asp-action="UserRegister" asp-controller="User" method="post">
                 @if(ViewBag.message != null)
                 {
                     <div class="row">
@@ -42,6 +42,23 @@
                     <div class="col-md-12">
                         <button class="btn btn-danger" type="submit">S'inscrire</button>
                     </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form asp-action="LoginUser" asp-controller="User" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="form-control" type="text" name="Email" placeholder="Votre email" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="form-control" type="password" name="Password" placeholder="Votre mot de passe" />
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="col-md-12 btn btn-danger" type="submit">Se connecter</button>
                 </div>
             </form>
         </div>

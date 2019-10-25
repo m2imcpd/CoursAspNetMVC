@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ECommerce.Models;
 using ECommerce.Tools;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Controllers
@@ -12,9 +13,12 @@ namespace ECommerce.Controllers
     {
         private DataDbContext data;
 
-        public UserController(DataDbContext _data)
+        private ILoginService serviceLogin;
+
+        public UserController(DataDbContext _data, ILoginService _serviceLogin)
         {
             data = _data;
+            serviceLogin = _serviceLogin;
         }
         public IActionResult Index()
         {
@@ -33,6 +37,21 @@ namespace ECommerce.Controllers
                 data.Users.Add(user);
                 data.SaveChanges();
                 return RedirectToAction("Index", "Panier",null);
+            }
+        }
+
+        public IActionResult LoginUser(string Email, string Password)
+        {
+           
+            if(!serviceLogin.LoginConnection(Email, Password))
+            {
+                ViewBag.message = "Error de login";
+                return View("Index");
+            }
+            else
+            {
+               
+                return RedirectToAction("Index", "Panier", null);
             }
         }
     }
