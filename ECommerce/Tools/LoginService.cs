@@ -19,6 +19,7 @@ namespace ECommerce.Tools
         {
             data = _data;
             accessor = _accessor;
+            isConnected = TestConnection();
         }
         public bool LoginConnection(string email, string password)
         {
@@ -30,6 +31,20 @@ namespace ECommerce.Tools
                 accessor.HttpContext.Response.Cookies.Append("userPassword", password, new CookieOptions { Expires = DateTime.Now.AddDays(1) });
             }
             return isConnected;
+        }
+
+        public bool TestConnection()
+        {
+            string email = accessor.HttpContext.Request.Cookies["userEmail"];
+            string password = accessor.HttpContext.Request.Cookies["userPassword"];
+            UserModel u = data.Users.FirstOrDefault((x) => x.Email == email && x.Password == password);
+            return u != null;
+        }
+        public void LogOut()
+        {
+            accessor.HttpContext.Response.Cookies.Append("userEmail", "", new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+            accessor.HttpContext.Response.Cookies.Append("userPassword", "", new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+            isConnected = false;
         }
     }
 }

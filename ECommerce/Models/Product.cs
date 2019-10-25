@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace ECommerce.Models
         public string Description { get => description; set => description = value; }
         public decimal Price { get => price; set => price = value; }
 
+        [JsonIgnore]
         public virtual ICollection<ProductCategorie> Categories { get; set; }
         public virtual ICollection<ImageProduit> Images { get; set; }
 

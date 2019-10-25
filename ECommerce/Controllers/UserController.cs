@@ -22,6 +22,10 @@ namespace ECommerce.Controllers
         }
         public IActionResult Index()
         {
+            if(serviceLogin.IsConnected)
+            {
+                return RedirectToAction("Index", "Panier", null);
+            }
             return View();
         }
 
@@ -42,7 +46,6 @@ namespace ECommerce.Controllers
 
         public IActionResult LoginUser(string Email, string Password)
         {
-           
             if(!serviceLogin.LoginConnection(Email, Password))
             {
                 ViewBag.message = "Error de login";
@@ -50,9 +53,14 @@ namespace ECommerce.Controllers
             }
             else
             {
-               
                 return RedirectToAction("Index", "Panier", null);
             }
+        }
+
+        public IActionResult LogOut()
+        {
+            serviceLogin.LogOut();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -9,5 +9,9 @@ namespace ECommerce.Tools
     {
         bool IsConnected { get; }
         bool LoginConnection(string email, string password);
+
+        bool TestConnection();
+
+        void LogOut();
     }
 }

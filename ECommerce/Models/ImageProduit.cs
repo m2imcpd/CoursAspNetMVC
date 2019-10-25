@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace ECommerce.Models
         public int Id { get => id; set => id = value; }
         [ForeignKey("ImageId")]
         public virtual Image Image {get;set;}
-
+        [JsonIgnore]
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
     }
