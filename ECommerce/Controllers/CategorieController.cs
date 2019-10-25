@@ -5,11 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using ECommerce.Models;
 using ECommerce.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Controllers
 {
+    [Authorize("admin")]
     public class CategorieController : Controller
     {
         private DataDbContext data;

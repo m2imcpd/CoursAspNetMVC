@@ -42,6 +42,10 @@ namespace ECommerce
                 options.AddPolicy("client", pol=> {
                     pol.Requirements.Add(new AccessRequirement(2));
                 });
+                //Ajouter une police admin pour sécuriser les pages ajouter catégorie et produit
+                options.AddPolicy("admin", pol => {
+                    pol.Requirements.Add(new AccessRequirement(3));
+                });
             });
             services.AddSingleton<IAuthorizationHandler, AccessHandler>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

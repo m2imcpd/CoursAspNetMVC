@@ -43,7 +43,7 @@ namespace ECommerce.Controllers
         }
 
 
-        
+        [Authorize("admin")]
         public IActionResult FormsProduct()
         {
             ViewBag.Categories = new List<SelectListItem>();
@@ -55,6 +55,7 @@ namespace ECommerce.Controllers
             return View();
         }
 
+        [Authorize("admin")]
         public IActionResult addProduct([Bind("Title, Description, Price")] Product produit, List<IFormFile> photos, List<int> Categories)
         {
             foreach(IFormFile image in photos)

@@ -32,8 +32,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Categorie" asp-action="FormCategorie">Ajouter une categorie</a></li>
-                    <li><a asp-area="" asp-controller="Product" asp-action="FormsProduct">Ajouter un produit</a></li>
+                    @if (ServiceLogin.GetUserProfil() >= 3)
+                    {
+                        <li><a asp-area="" asp-controller="Categorie" asp-action="FormCategorie">Ajouter une categorie</a></li>
+                        <li><a asp-area="" asp-controller="Product" asp-action="FormsProduct">Ajouter un produit</a></li>
+                    }
+
                     @if (ServiceLogin.IsConnected)
                     {
                         <li><a asp-area="" asp-controller="User" asp-action="LogOut">Se deconnecter</a></li>
