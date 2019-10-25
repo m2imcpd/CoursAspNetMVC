@@ -37,6 +37,13 @@ namespace ECommerce
             services.AddTransient<IServicePanier, ServicePanier>();
             services.AddSingleton<ILoginService, LoginService>();
             services.AddHttpContextAccessor();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("client", pol=> {
+                    pol.Requirements.Add(new AccessRequirement(2));
+                });
+            });
+            services.AddSingleton<IAuthorizationHandler, AccessHandler>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }

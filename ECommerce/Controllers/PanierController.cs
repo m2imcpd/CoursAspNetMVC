@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ECommerce.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Controllers
@@ -39,6 +40,12 @@ namespace ECommerce.Controllers
         {
             servicePanier.UpdateQuantite(qty, id);
             return RedirectToAction("Index");
+        }
+
+        [Authorize("client")]
+        public IActionResult ValidPanier()
+        {
+            return View();
         }
     }
 }

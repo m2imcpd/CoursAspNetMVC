@@ -13,5 +13,7 @@ namespace ECommerce.Tools
         bool TestConnection();
 
         void LogOut();
+
+        int GetUserProfil();
     }
 }

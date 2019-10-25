@@ -46,5 +46,20 @@ namespace ECommerce.Tools
             accessor.HttpContext.Response.Cookies.Append("userPassword", "", new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
             isConnected = false;
         }
+
+        public int GetUserProfil()
+        {
+            string email = accessor.HttpContext.Request.Cookies["userEmail"];
+            string password = accessor.HttpContext.Request.Cookies["userPassword"];
+            UserModel u = data.Users.FirstOrDefault((x) => x.Email == email && x.Password == password);
+            if(u != null)
+            {
+                return u.TypeProfil;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
