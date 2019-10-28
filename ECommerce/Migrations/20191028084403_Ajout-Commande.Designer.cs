@@ -3,14 +3,16 @@ using ECommerce.Tools;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191028084403_Ajout-Commande")]
+    partial class AjoutCommande
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,6 +128,8 @@ namespace ECommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CommandId");
+
                     b.Property<int>("CommandeId");
 
                     b.Property<int>("ProductId");
@@ -134,7 +138,7 @@ namespace ECommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommandeId");
+                    b.HasIndex("CommandId");
 
                     b.HasIndex("ProductId");
 
@@ -208,7 +212,7 @@ namespace ECommerce.Migrations
                 {
                     b.HasOne("ECommerce.Models.Commande", "Commande")
                         .WithMany("Products")
-                        .HasForeignKey("CommandeId")
+                        .HasForeignKey("CommandId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ECommerce.Models.Product", "Product")

@@ -84,5 +84,10 @@ namespace ECommerce.Tools
             });
             return total;
         }
+
+        public void ResetPanier()
+        {
+            session.SetString("panier", JsonConvert.SerializeObject(new List<dynamic>()));
+        }
     }
 }

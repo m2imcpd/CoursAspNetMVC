@@ -22,6 +22,9 @@ namespace ECommerce.Tools
         public DbSet<UserModel> Users { get; set; }
 
         public DbSet<ProductCategorie> ProductCategories { get; set; }
+
+        public DbSet<Commande> Commandes { get; set; }
+        public DbSet<ProductCommande> ProductsCommandes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\coursAspNet;Integrated Security=True");

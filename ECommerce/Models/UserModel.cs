@@ -19,5 +19,12 @@ namespace ECommerce.Models
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
         public int TypeProfil { get => typeProfil; set => typeProfil = value; }
+
+        public ICollection<Commande> Commandes { get; set; }
+
+        public UserModel()
+        {
+            Commandes = new List<Commande>();
+        }
     }
 }

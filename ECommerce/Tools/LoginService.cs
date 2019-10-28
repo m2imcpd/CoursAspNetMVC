@@ -61,5 +61,13 @@ namespace ECommerce.Tools
                 return 0;
             }
         }
+
+        public UserModel GetUser()
+        {
+            string email = accessor.HttpContext.Request.Cookies["userEmail"];
+            string password = accessor.HttpContext.Request.Cookies["userPassword"];
+            UserModel u = data.Users.FirstOrDefault((x) => x.Email == email && x.Password == password);
+            return u;
+        }
     }
 }

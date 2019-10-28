@@ -22,10 +22,12 @@ namespace ECommerce.Models
         public virtual ICollection<ProductCategorie> Categories { get; set; }
         public virtual ICollection<ImageProduit> Images { get; set; }
 
+        public virtual ICollection<ProductCommande> Commandes { get; set; }
         public Product()
         {
             Categories = new List<ProductCategorie>();
             Images = new List<ImageProduit>();
+            Commandes = new List<ProductCommande>();
         }
     }
 }

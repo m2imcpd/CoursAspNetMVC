@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ECommerce.Models;
 using ECommerce.Tools;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,16 @@ namespace ECommerce.Controllers
         private IServicePanier servicePanier;
         private IServiceProvider serviceProvider;
 
+        private ILoginService serviceLogin;
+
+        private DataDbContext data;
+
         public PanierController(IServiceProvider _serviceProvider)
         {
             serviceProvider = _serviceProvider;
             servicePanier = (IServicePanier)serviceProvider.GetService(typeof(IServicePanier));
+            serviceLogin = (ILoginService)serviceProvider.GetService(typeof(ILoginService));
+            data = (DataDbContext)serviceProvider.GetService(typeof(DataDbContext));
         }
         public IActionResult Index()
         {
@@ -45,6 +52,19 @@ namespace ECommerce.Controllers
         [Authorize("client")]
         public IActionResult ValidPanier()
         {
+            Commande c = new Commande();
+            c.Client = serviceLogin.GetUser();
+            foreach(dynamic p in servicePanier.GetProduitsPanier())
+            {
+                ProductCommande pc = new ProductCommande { Product = data.Products.Find((int)p.Produit.Id), Qty = p.qty };
+                c.Products.Add(pc);
+            }
+            c.Total = servicePanier.TotalPanier();
+            data.Commandes.Add(c);
+            if(data.SaveChanges() >= 1)
+            {
+                servicePanier.ResetPanier();
+            }
             return View();
         }
     }

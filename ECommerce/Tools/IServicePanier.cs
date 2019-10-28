@@ -17,5 +17,7 @@ namespace ECommerce.Tools
         List<dynamic> GetProduitsPanier();
 
         void UpdateQuantite(int qty, int produitId);
+
+        void ResetPanier();
     }
 }
