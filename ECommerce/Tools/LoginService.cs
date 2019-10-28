@@ -1,5 +1,6 @@
 ﻿using ECommerce.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +67,7 @@ namespace ECommerce.Tools
         {
             string email = accessor.HttpContext.Request.Cookies["userEmail"];
             string password = accessor.HttpContext.Request.Cookies["userPassword"];
-            UserModel u = data.Users.FirstOrDefault((x) => x.Email == email && x.Password == password);
+            UserModel u = data.Users.Include("Commandes").FirstOrDefault((x) => x.Email == email && x.Password == password);
             return u;
         }
     }

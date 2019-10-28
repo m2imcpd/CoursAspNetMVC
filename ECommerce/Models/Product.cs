@@ -21,7 +21,7 @@ namespace ECommerce.Models
         [JsonIgnore]
         public virtual ICollection<ProductCategorie> Categories { get; set; }
         public virtual ICollection<ImageProduit> Images { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<ProductCommande> Commandes { get; set; }
         public Product()
         {

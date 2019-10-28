@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace ECommerce.Models
         public string Password { get => password; set => password = value; }
         public int TypeProfil { get => typeProfil; set => typeProfil = value; }
 
+        [JsonIgnore]
         public ICollection<Commande> Commandes { get; set; }
 
         public UserModel()

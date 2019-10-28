@@ -1,0 +1,27 @@
+﻿@model List<Commande>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Liste de commande</h2>
+
+@foreach (Commande c in Model)
+{
+<div class="row">
+    <div class="col-md-3">
+        @c.Client.Nom
+    </div>
+    <div class="col-md-3">
+        @c.Total
+    </div>
+    <div class="col-md-3">
+        @foreach(ProductCommande p in c.Products)
+        {
+            <div class="row">
+                @p.ProductId
+            </div>
+        }
+    </div>
+</div>
+}
+

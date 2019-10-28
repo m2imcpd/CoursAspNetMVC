@@ -38,6 +38,7 @@ namespace ECommerce.Controllers
             }
             else
             {
+                user.TypeProfil = 2;
                 data.Users.Add(user);
                 data.SaveChanges();
                 return RedirectToAction("Index", "Panier",null);
