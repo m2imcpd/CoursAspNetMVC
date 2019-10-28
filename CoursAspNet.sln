@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAspNet", "CoursAspNet\CoursAspNet.csproj", "{733DFD94-B175-47AA-BDC4-EA3DCB443C41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Annuaire", "Annuaire\Annuaire.csproj", "{B9DF6C0D-C47B-4D60-8976-4038F1DFD381}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Annuaire", "Annuaire\Annuaire.csproj", "{B9DF6C0D-C47B-4D60-8976-4038F1DFD381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce", "ECommerce\ECommerce.csproj", "{D61F17D0-B95D-42B2-9199-6ABF618CE158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce", "ECommerce\ECommerce.csproj", "{D61F17D0-B95D-42B2-9199-6ABF618CE158}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "convertimageToByte", "convertimageToByte\convertimageToByte.csproj", "{0741E82E-236F-494A-9B84-AD266E55A402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAPI", "CoursAPI\CoursAPI.csproj", "{0DB486B6-45D6-4E53-AE13-D53161BB2BFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0741E82E-236F-494A-9B84-AD266E55A402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0741E82E-236F-494A-9B84-AD266E55A402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0741E82E-236F-494A-9B84-AD266E55A402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DB486B6-45D6-4E53-AE13-D53161BB2BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB486B6-45D6-4E53-AE13-D53161BB2BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB486B6-45D6-4E53-AE13-D53161BB2BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB486B6-45D6-4E53-AE13-D53161BB2BFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
