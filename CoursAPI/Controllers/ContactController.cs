@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoursAPI.Model;
 using CoursAPI.Tools;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace CoursAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [EnableCors("AllowAll")]
     public class ContactController : ControllerBase
     {
 
@@ -21,8 +23,10 @@ namespace CoursAPI.Controllers
             data = _data;
         }
         [HttpGet]
+        [EnableCors("AllowAll")]
         public ActionResult Get()
         {
+            var tes = data.Contacts.ToSql();
             return Ok(data.Contacts.ToList());
         }
 

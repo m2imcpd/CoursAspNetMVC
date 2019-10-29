@@ -27,6 +27,19 @@ namespace CoursAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<DataDbContext>();
+            //Ajouter authorize cross origin
+            services.AddCors(cors =>
+            {
+                cors.AddPolicy("AllowAll", o =>
+                {
+                    o.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+
+                cors.AddPolicy("LimitToOneOrigin", o =>
+                {
+                    o.WithOrigins("192.168.0.1").AllowAnyHeader().AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +49,11 @@ namespace CoursAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            //Par default 
+            app.UseCors(options=> {
+                //Toute origine et toute methode et tout entete
+                options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            });
             app.UseMvc();
         }
     }
