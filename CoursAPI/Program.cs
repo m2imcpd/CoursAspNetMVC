@@ -19,6 +19,9 @@ namespace CoursAPI
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>().UseKestrel(options=> {
+                    options.Limits.MaxRequestBodySize = 500_000_000;
+                    options.Limits.MaxRequestBufferSize = 500_000_000;
+                });
     }
 }

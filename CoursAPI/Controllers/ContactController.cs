@@ -12,7 +12,6 @@ namespace CoursAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [EnableCors("AllowAll")]
     public class ContactController : ControllerBase
     {
 
@@ -23,7 +22,7 @@ namespace CoursAPI.Controllers
             data = _data;
         }
         [HttpGet]
-        [EnableCors("AllowAll")]
+        
         public ActionResult Get()
         {
             var tes = data.Contacts.ToSql();

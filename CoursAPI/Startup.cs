@@ -32,7 +32,7 @@ namespace CoursAPI
             {
                 cors.AddPolicy("AllowAll", o =>
                 {
-                    o.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                    o.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
                 });
 
                 cors.AddPolicy("LimitToOneOrigin", o =>
@@ -55,6 +55,7 @@ namespace CoursAPI
                 options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             });
             app.UseMvc();
+            
         }
     }
 }
