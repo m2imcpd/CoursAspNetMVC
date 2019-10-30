@@ -14,9 +14,8 @@ namespace CoursAPI.Controllers
     [EnableCors("AllowAll")]
     public class UploadController : ControllerBase
     {
-        [HttpPost]
+        [HttpPost, DisableRequestSizeLimit]
         [Route("/upload")]
-       
         public ActionResult Upload()
         {
             var file = Request.Form.Files[0];
@@ -25,6 +24,7 @@ namespace CoursAPI.Controllers
                 var pathFolder = Path.Combine("images", Path.GetFileName(file.FileName));
                 FileStream s = new FileStream(pathFolder, FileMode.Create);
                 file.CopyTo(s);
+                s.Close();
                 return Ok(new { message = pathFolder });
             }
             else
