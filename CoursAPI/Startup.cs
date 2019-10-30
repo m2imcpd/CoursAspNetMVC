@@ -55,7 +55,7 @@ namespace CoursAPI
                 options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             });
             app.UseMvc();
-            
+            app.UseStaticFiles();
         }
     }
 }

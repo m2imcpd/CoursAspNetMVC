@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAPI.Model;
@@ -36,16 +37,35 @@ namespace CoursAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Contact c)
+        public ActionResult Post()
         {
-            data.Contacts.Add(c);
-            if(data.SaveChanges() >= 1)
+            var dataForm = Request.Form;
+            Contact c = new Contact();
+            c.Nom = dataForm["Nom"].ToString();
+            c.Prenom = dataForm["Prenom"].ToString();
+            c.Email = dataForm["Email"].ToString();
+            var file = Request.Form.Files[0];
+            if (file.Length > 0)
             {
-                return Ok(new { message = "contact ajouté", error = false, contactId = c.Id });
+                var pathFolder = Path.Combine("wwwroot","avatar", Path.GetFileName(file.FileName));
+                FileStream s = new FileStream(pathFolder, FileMode.Create);
+                c.UrlImage = "http://" + Request.Host + "/avatar/"+ Path.GetFileName(file.FileName);
+                file.CopyTo(s);
+                s.Close();
+
+                data.Contacts.Add(c);
+                if (data.SaveChanges() >= 1)
+                {
+                    return Ok(new { message = "contact ajouté", error = false, contactId = c.Id });
+                }
+                else
+                {
+                    return Ok(new { message = "erreur serveur", error = true });
+                }
             }
             else
             {
-                return Ok(new { message = "erreur serveur", error = true });
+                return Ok(new { message = "erreur upload", error = true });
             }
         }
 

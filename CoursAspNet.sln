@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "convertimageToByte", "conve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAPI", "CoursAPI\CoursAPI.csproj", "{0DB486B6-45D6-4E53-AE13-D53161BB2BFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAngularApiRest", "CoursAngularApiRest\CoursAngularApiRest.csproj", "{3126467C-24C2-4279-9087-9ECD71A87CF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAngularApiRest", "CoursAngularApiRest\CoursAngularApiRest.csproj", "{3126467C-24C2-4279-9087-9ECD71A87CF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
