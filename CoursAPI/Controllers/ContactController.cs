@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoursAPI.Model;
 using CoursAPI.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,7 @@ namespace CoursAPI.Controllers
         {
             return Ok(data.Contacts.Find(id));
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Post()
         {
@@ -68,7 +69,7 @@ namespace CoursAPI.Controllers
                 return Ok(new { message = "erreur upload", error = true });
             }
         }
-
+        [Authorize]
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Contact c)
         {

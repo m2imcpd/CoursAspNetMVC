@@ -17,6 +17,8 @@ namespace CoursAPI.Tools
 
         public DbSet<Contact> Contacts { get; set; }
 
+        public DbSet<UserModel> UsersContacts { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\coursAspNet;Integrated Security=True");
