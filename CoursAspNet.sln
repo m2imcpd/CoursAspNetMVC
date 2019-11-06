@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAPI", "CoursAPI\CoursA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAngularApiRest", "CoursAngularApiRest\CoursAngularApiRest.csproj", "{3126467C-24C2-4279-9087-9ECD71A87CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestJsonWebToken", "TestJsonWebToken\TestJsonWebToken.csproj", "{52BB490C-51D0-4013-8D80-3917B6E85651}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestJsonWebToken", "TestJsonWebToken\TestJsonWebToken.csproj", "{52BB490C-51D0-4013-8D80-3917B6E85651}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionApiRestDeezer", "CorrectionApiRestDeezer\CorrectionApiRestDeezer.csproj", "{73CFA0F7-D33C-4061-B082-9BD37C41B342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{52BB490C-51D0-4013-8D80-3917B6E85651}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52BB490C-51D0-4013-8D80-3917B6E85651}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52BB490C-51D0-4013-8D80-3917B6E85651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73CFA0F7-D33C-4061-B082-9BD37C41B342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73CFA0F7-D33C-4061-B082-9BD37C41B342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73CFA0F7-D33C-4061-B082-9BD37C41B342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73CFA0F7-D33C-4061-B082-9BD37C41B342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
